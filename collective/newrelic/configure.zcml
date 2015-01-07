@@ -7,12 +7,10 @@
     xmlns:cmf="http://namespaces.zope.org/cmf"
     i18n_domain="collective.newrelic">
 
-    <include package=".transforms" />
-
-    <subscriber                                                                
-      for="ZPublisher.interfaces.IPubAfterTraversal"             
-      handler=".hooks.newrelic_transaction"                              
-      />    
+    <subscriber
+      for="ZPublisher.interfaces.IPubAfterTraversal"
+      handler=".hooks.newrelic_transaction"
+      />
 
 </configure>
 

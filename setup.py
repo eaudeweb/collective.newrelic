@@ -7,14 +7,14 @@ tests_require = ['zope.testing']
 
 setup(name='collective.newrelic',
       version=version,
-      description="Zope/Plone Newrelic instrumentation",
+      description="Zope Newrelic instrumentation",
       long_description=open("README.md").read() + "\n" +
                        open(os.path.join("docs", "TODO.txt")).read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
       # http://pypi.python.org/pypi?:action=list_classifiers
       classifiers=[
-        "Framework :: Plone",
+        "Framework :: Zope",
         "Programming Language :: Python",
         ],
       keywords='',
@@ -38,7 +38,7 @@ setup(name='collective.newrelic',
       entry_points="""
       # -*- Entry points: -*-
       [z3c.autoinclude.plugin]
-      target = plone
+      target = zope
       """,
       setup_requires=[],
       )

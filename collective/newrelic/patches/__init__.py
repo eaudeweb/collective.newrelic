@@ -12,21 +12,17 @@ import zserverpublisher
 # Enable/disable as you like
 import zpublisher_mapply
 
-import transformchains
-
 import zope_event
 
 import catalog_tool
 
 import talinterpreter
 
-import cron4plone
-
 import Globals
 
 import os
 
-from collective.newrelic.utils import logger 
+from collective.newrelic.utils import logger
 
 
 try:
