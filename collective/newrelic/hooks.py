@@ -1,6 +1,5 @@
 from collective.newrelic.utils import logger
 from zope.browser.interfaces import IBrowserView
-from zope.browserresource.interfaces import IResource
 from zope.pagetemplate.interfaces import IPageTemplate
 import newrelic.agent
 import newrelic.api
@@ -26,7 +25,7 @@ def newrelic_transaction(event):
             # 1. BrowserViews (but not the resource kind ..)
             # 2. PageTemplate (/skins/*/*.pt ) being used as views
             # 3. PageTemplates in ZMI
-            if (IBrowserView.providedBy(published) or IPageTemplate.providedBy(published)) and not IResource.providedBy(published):
+            if IBrowserView.providedBy(published) or IPageTemplate.providedBy(published):
                 trans.name_transaction(transname, group='Zope2', priority=1)
                 if hasattr(published, 'context'):  # Plone
                     newrelic.agent.add_custom_parameter('id', getattr(published.context, 'id', ''))
@@ -41,10 +40,9 @@ def newrelic_transaction(event):
                 logger.debug("Transaction: {0}".format(transname))
             else:
                 # For debugging purpose
-                logger.debug("NO transaction? : {0}   Browser: {1}  Resource: {2} PageTemplate: {3}".format(
+                logger.debug("NO transaction? : {0}   Browser: {1} PageTemplate: {2}".format(
                     transname,
                     IBrowserView.providedBy(published),
-                    IResource.providedBy(published),
                     IPageTemplate.providedBy(published)))
 
     except Exception, e:
